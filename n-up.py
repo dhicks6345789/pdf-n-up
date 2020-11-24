@@ -17,7 +17,7 @@ outputPage = outputPDF.addBlankPage(pageWidth, pageHeight)
 for pageNumber in range (0, inputPDF.getNumPages()):
 	print(str(pageNumber))
 inputPage = inputPDF.getPage(0)
-inputPage.rotateCounterClockwise(90)
+inputPage = inputPage.rotateCounterClockwise(90)
 #inputPage.scaleBy(0.25)
 outputPage.mergeScaledTranslatedPage(inputPage, 0.25, 0, 0, False)
 
