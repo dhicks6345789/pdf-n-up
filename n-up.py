@@ -7,7 +7,7 @@ if (len(sys.argv) != 4):
 	print("Layout can be one of: booklet, zine.")
 	sys.exit(1)
 	
-inputPDF = pyPDF2.PdfFileReader(open(sys.argv[2], "rb"))
+inputPDF = PyPDF2.PdfFileReader(open(sys.argv[2], "rb"))
 outputPDF = PdfFileWriter()
 for pageNumber in range (0, inputPDF.getNumPages()-1):
 	print(pageNumber)
