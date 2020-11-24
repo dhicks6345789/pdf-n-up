@@ -19,7 +19,7 @@ print(scaledHeight)
 
 outputPage = outputPDF.addBlankPage(pageWidth, pageHeight)
 
-pageTransforms = [[0,0,90],[scaledWidth,scaledHeight,90],[0,0,90],[0,0,90],[scaledWidth*2,scaledHeight-10,270],[scaledWidth*2,pageHeight-(scaledHeight*2),270],[0,0,180],[0,0,180]]
+pageTransforms = [[0,0,90],[0,0,90],[0,0,90],[0,0,90],[scaledHeight,scaledWidth,270],[0,0,270],[0,0,180],[0,0,180]]
 for pageNumber in range (0, inputPDF.getNumPages()):
 	inputPage = inputPDF.getPage(pageNumber)
 	inputPage.scaleBy(0.25)
