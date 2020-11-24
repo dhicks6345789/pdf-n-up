@@ -4,9 +4,9 @@ import PyPDF2
 
 if (len(sys.argv) != 4):
 	print("Usage: python n-up.py layout inputFile outputFile")
-	print("Layout can be one of: booklet, zine."
+	print("Layout can be one of: booklet, zine.")
 	sys.exit(1)
-print()
+	
 inputPDF = pyPDF2.PdfFileReader(open(sys.argv[2], "rb"))
 outputPDF = PdfFileWriter()
 for pageNumber in range (0, inputPDF.getNumPages()-1):
