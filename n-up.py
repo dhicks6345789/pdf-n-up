@@ -15,9 +15,9 @@ pageHeight = inputPDF.getPage(0).mediaBox[3] - inputPDF.getPage(0).mediaBox[1]
 outputPage = outputPDF.addBlankPage(pageWidth, pageHeight)
 
 for pageNumber in range (0, inputPDF.getNumPages()):
-	print("A" + str(pageNumber) + "B")
+	print(str(pageNumber))
 inputPage = inputPDF.getPage(0)
-outputPage.mergeTranslatedPage(inputPage, outputPage.mediaBox.getUpperRight_x(),0, True)
+outputPage.mergeScaledTranslatedPage(inputPage, 0.125, 0, 0, False)
 
 outputHandle = open(sys.argv[3], "wb")
 outputPDF.write(outputHandle)
