@@ -9,7 +9,7 @@ if (len(sys.argv) != 4):
 	
 inputPDF = PyPDF2.PdfFileReader(open(sys.argv[2], "rb"))
 outputPDF = PyPDF2.PdfFileWriter()
-for pageNumber in range (0, inputPDF.getNumPages()-1):
+for pageNumber in range (0, inputPDF.getNumPages()):
 	print("A" + str(pageNumber) + "B")
 #lhs = input1.getPage(iter)
 #rhs = input1.getPage(iter+1)
