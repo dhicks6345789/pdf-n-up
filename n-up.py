@@ -17,7 +17,9 @@ outputPage = outputPDF.addBlankPage(pageWidth, pageHeight)
 for pageNumber in range (0, inputPDF.getNumPages()):
 	print(str(pageNumber))
 inputPage = inputPDF.getPage(0)
-outputPage.mergeScaledTranslatedPage(inputPage, 0.125, 0, 0, False)
+inputPage.rotateCounterClockwise(90)
+#inputPage.scaleBy(0.25)
+outputPage.mergeScaledTranslatedPage(inputPage, 0.25, 0, 0, False)
 
 outputHandle = open(sys.argv[3], "wb")
 outputPDF.write(outputHandle)
