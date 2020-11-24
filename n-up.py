@@ -13,7 +13,7 @@ print(inputPDF.getPage(0).mediaBox[2])
 #outputPage = outputPDF.addBlankPage()
 for pageNumber in range (0, inputPDF.getNumPages()):
 	print("A" + str(pageNumber) + "B")
-inputPage = inputPDF.getPage(0)
+outputPage = inputPDF.getPage(0)
 outputPage.mergeTranslatedPage(inputPage, outputPage.mediaBox.getUpperRight_x(),0, True)
 #output.addPage(lhs)
 #print (str(iter) + " "),
