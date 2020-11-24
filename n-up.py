@@ -8,19 +8,18 @@ if (len(sys.argv) != 4):
 	
 inputPDF = PyPDF2.PdfFileReader(open(sys.argv[2], "rb"))
 
-scaleFactor = 0.25
 outputPDF = PyPDF2.PdfFileWriter()
 pageWidth = inputPDF.getPage(0).mediaBox[2] - inputPDF.getPage(0).mediaBox[0]
-scaledWidth = pageWidth * scaleFactor
+scaledWidth = pageWidth / 2
 pageHeight = inputPDF.getPage(0).mediaBox[3] - inputPDF.getPage(0).mediaBox[1]
-scaledHeight = pageHeight * scaleFactor
+scaledHeight = pageHeight / 4
 
 outputPage = outputPDF.addBlankPage(pageWidth, pageHeight)
 
 pageTransforms = [[0,0,90],[scaledWidth,scaledHeight,90],[0,0,90],[0,0,90],[scaledWidth*2,scaledHeight,270],[0,0,180],[0,0,180],[0,0,180]]
 for pageNumber in range (0, inputPDF.getNumPages()):
 	inputPage = inputPDF.getPage(pageNumber)
-	inputPage.scaleBy(scaleFactor)
+	inputPage.scaleBy(0.25)
 	outputPage.mergeRotatedTranslatedPage(inputPage, pageTransforms[pageNumber][2], pageTransforms[pageNumber][0], pageTransforms[pageNumber][1], False)
 
 outputHandle = open(sys.argv[3], "wb")
