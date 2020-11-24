@@ -10,7 +10,7 @@ if (len(sys.argv) != 4):
 inputPDF = PyPDF2.PdfFileReader(open(sys.argv[2], "rb"))
 outputPDF = PyPDF2.PdfFileWriter()
 for pageNumber in range (0, inputPDF.getNumPages()-1):
-	print(pageNumber)
+	print("A" + pageNumber + "B")
 #lhs = input1.getPage(iter)
 #rhs = input1.getPage(iter+1)
 #lhs.mergeTranslatedPage(rhs, lhs.mediaBox.getUpperRight_x(),0, True)
