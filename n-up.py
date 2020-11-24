@@ -1,6 +1,6 @@
 import sys
 #import math
-import pypdf2
+import PyPDF2
 
 if (len(sys.argv) != 4):
 	print("Usage: python n-up.py layout inputFile outputFile")
