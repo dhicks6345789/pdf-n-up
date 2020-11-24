@@ -18,7 +18,7 @@ for pageNumber in range (0, inputPDF.getNumPages()):
 	print(str(pageNumber))
 inputPage = inputPDF.getPage(0)
 #inputPage.scaleBy(0.25)
-outputPage.mergeRotatedTranslatedPage(inputPage, 90, 0, 0, False)
+outputPage.mergeRotatedTranslatedPage(inputPage, 90, 200, 200, False)
 
 outputHandle = open(sys.argv[3], "wb")
 outputPDF.write(outputHandle)
