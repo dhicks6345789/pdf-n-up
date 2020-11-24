@@ -10,8 +10,9 @@ if (len(sys.argv) != 4):
 inputPDF = PyPDF2.PdfFileReader(open(sys.argv[2], "rb"))
 outputPDF = PyPDF2.PdfFileWriter()
 #outputPage = outputPDF.getPage(0)
-print(inputPDF.getPage(0).mediaBox[2])
-outputPage = outputPDF.addBlankPage()
+pageWidth = inputPDF.getPage(0).mediaBox[2] - inputPDF.getPage(0).mediaBox[0]
+pageHeight = inputPDF.getPage(0).mediaBox[3] - inputPDF.getPage(0).mediaBox[1]
+outputPage = outputPDF.addBlankPage(pageWidth, pageHeight)
 for pageNumber in range (0, inputPDF.getNumPages()):
 	print("A" + str(pageNumber) + "B")
 inputPage = inputPDF.getPage(0)
