@@ -19,5 +19,5 @@ for pageNumber in range (0, inputPDF.getNumPages()):
 inputPage = inputPDF.getPage(0)
 outputPage.mergeTranslatedPage(inputPage, outputPage.mediaBox.getUpperRight_x(),0, True)
 
-outputHandle = file(sys.argv[3], "wb")
+outputHandle = open(sys.argv[3], "wb")
 outputPDF.write(outputHandle)
