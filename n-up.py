@@ -14,6 +14,9 @@ scaledWidth = pageWidth / 2
 pageHeight = inputPDF.getPage(0).mediaBox[3] - inputPDF.getPage(0).mediaBox[1]
 scaledHeight = pageHeight / 4
 
+print(pageHeight)
+print(scaledHeight)
+
 outputPage = outputPDF.addBlankPage(pageWidth, pageHeight)
 
 pageTransforms = [[0,0,90],[scaledWidth,scaledHeight,90],[0,0,90],[0,0,90],[scaledWidth*2,-pageHeight,270],[scaledWidth*2,pageHeight-(scaledHeight*2),270],[0,0,180],[0,0,180]]
