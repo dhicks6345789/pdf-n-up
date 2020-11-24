@@ -8,7 +8,7 @@ if (len(sys.argv) != 4):
 	sys.exit(1)
 	
 inputPDF = PyPDF2.PdfFileReader(open(sys.argv[2], "rb"))
-outputPDF = PdfFileWriter()
+outputPDF = PyPDF2.PdfFileWriter()
 for pageNumber in range (0, inputPDF.getNumPages()-1):
 	print(pageNumber)
 #lhs = input1.getPage(iter)
