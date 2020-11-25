@@ -15,9 +15,9 @@ scaledHeight = pageHeight / 4
 outputPDF = PyPDF2.PdfFileWriter()
 outputPage = outputPDF.addBlankPage(pageWidth, pageHeight)
 
-pageTransforms = [[scaledWidth,scaledHeight*4,270],[0,0,270],[0,0,270],[0,0,270],[0,0,90],[0,0,90],[0,0,90],[0,0,90]]
+pageTransforms = [[scaledWidth,scaledHeight*4,90],[0,0,270],[0,0,270],[0,0,270],[0,0,90],[0,0,90],[0,0,90],[0,0,90]]
 for pageNumber in range (0, inputPDF.getNumPages()):
-	if pageNumber == 0:
+	if pageNumber <= 0:
 		outputPage.mergeRotatedScaledTranslatedPage(inputPDF.getPage(pageNumber), pageTransforms[pageNumber][2], 0.3536, pageTransforms[pageNumber][0], pageTransforms[pageNumber][1],True)
 
 outputPDF.write(open(sys.argv[3], "wb"))
