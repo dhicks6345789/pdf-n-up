@@ -6,34 +6,18 @@ if (len(sys.argv) != 4):
 	print("Layout can be one of: booklet, zine.")
 	sys.exit(1)
 	
-inputHandle = open(sys.argv[2], "rb")
-inputPDF = PyPDF2.PdfFileReader(inputHandle)
-inputHandle.close()
-outputPDF = PyPDF2.PdfFileWriter()
+inputPDF = PyPDF2.PdfFileReader(open(sys.argv[2], "rb"))
 pageWidth = inputPDF.getPage(0).mediaBox[2] - inputPDF.getPage(0).mediaBox[0]
 scaledWidth = pageWidth / 2
 pageHeight = inputPDF.getPage(0).mediaBox[3] - inputPDF.getPage(0).mediaBox[1]
 scaledHeight = pageHeight / 4
 
-print(pageHeight)
-print(scaledHeight)
-
-pageTransforms = [[300,0,270],[0,0,270],[0,0,270],[0,0,270],[0,0,90],[0,0,90],[0,0,90],[0,0,90]]
-for pageNumber in range (0, inputPDF.getNumPages()):
-	outputPDF.addPage(inputPDF.getPage(pageNumber).rotateClockwise(pageTransforms[pageNumber][2]))
-	
-outputHandle = open(sys.argv[3], "wb")
-outputPDF.write(outputHandle)
-outputHandle.close()
-
-inputHandle = open(sys.argv[2], "rb")
-inputPDF = PyPDF2.PdfFileReader(inputHandle)
-inputHandle.close()
 outputPDF = PyPDF2.PdfFileWriter()
 outputPage = outputPDF.addBlankPage(pageWidth, pageHeight)
+
+pageTransforms = [[200,0,270],[0,0,270],[0,0,270],[0,0,270],[0,0,90],[0,0,90],[0,0,90],[0,0,90]]
 for pageNumber in range (0, inputPDF.getNumPages()):
 	if pageNumber == 0:
-		outputPage.mergeScaledTranslatedPage(inputPDF.getPage(pageNumber), 0.25, pageTransforms[pageNumber][0], pageTransforms[pageNumber][1], False)
+		outputPDF.mergeRotatedScaledTranslatedPage(inputPDF.getPage(pageNumber), pageTransforms[pageNumber][2], 0.25, pageTransforms[pageNumber][0], pageTransforms[pageNumber][1])
 
-outputHandle = open(sys.argv[3], "wb")
-outputPDF.write(outputHandle)
+outputPDF.write(open(sys.argv[3], "wb"))
