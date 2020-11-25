@@ -17,11 +17,8 @@ scaledHeight = pageHeight / 4
 print(pageHeight)
 print(scaledHeight)
 
-outputPDF.addPage(inputPDF.getPage(0).rotateCounterClockwise(90))
-
-
-
-#outputPage = outputPDF.addBlankPage(pageWidth, pageHeight)
+outputPage = outputPDF.addBlankPage(pageWidth, pageHeight)
+outputPage.mergeTranslatedPage(inputPDF.getPage(0).rotateCounterClockwise(90), 300, 0, False)
 
 #inputPage = inputPDF.getPage(0).rotateClockwise(90)
 #inputPage.scaleBy(0.25)
