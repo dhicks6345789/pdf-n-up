@@ -15,8 +15,11 @@ scaledHeight = pageHeight / 4
 outputPDF = PyPDF2.PdfFileWriter()
 outputPage = outputPDF.addBlankPage(pageWidth, pageHeight)
 
-pageTransforms = [[scaledWidth*2,scaledHeight*3,90],[0,scaledHeight*4,270],[0,scaledHeight*3,270],[0,scaledHeight*2,270],[0,scaledHeight*1,270],[scaledWidth*2,0,90],[scaledWidth*2,scaledHeight*1,90],[scaledWidth*2,scaledHeight*2,90]]
-for pageNumber in range (0, inputPDF.getNumPages()):
-	outputPage.mergeRotatedScaledTranslatedPage(inputPDF.getPage(pageNumber), pageTransforms[pageNumber][2], 0.3536, pageTransforms[pageNumber][0], pageTransforms[pageNumber][1])
+if sys.argv[1] == "zine":
+	pageTransforms = [[scaledWidth*2,scaledHeight*3,90],[0,scaledHeight*4,270],[0,scaledHeight*3,270],[0,scaledHeight*2,270],[0,scaledHeight*1,270],[scaledWidth*2,0,90],[scaledWidth*2,scaledHeight*1,90],[scaledWidth*2,scaledHeight*2,90]]
+	for pageNumber in range (0, inputPDF.getNumPages()):
+		outputPage.mergeRotatedScaledTranslatedPage(inputPDF.getPage(pageNumber), pageTransforms[pageNumber][2], 0.3536, pageTransforms[pageNumber][0], pageTransforms[pageNumber][1])
+else:
+	print("Unknown layout: " + sys.argv[1])
 
 outputPDF.write(open(sys.argv[3], "wb"))
