@@ -23,6 +23,7 @@ for pageNumber in range (0, inputPDF.getNumPages()):
 	
 outputHandle = open(sys.argv[3], "wb")
 outputPDF.write(outputHandle)
+outputHandle.close()
 
 inputPDF = PyPDF2.PdfFileReader(open(sys.argv[3], "rb"))
 outputPDF = PyPDF2.PdfFileWriter()
