@@ -8,6 +8,7 @@ if (len(sys.argv) != 4):
 	
 inputHandle = open(sys.argv[2], "rb")
 inputPDF = PyPDF2.PdfFileReader(inputHandle)
+inputHandle.close()
 outputPDF = PyPDF2.PdfFileWriter()
 pageWidth = inputPDF.getPage(0).mediaBox[2] - inputPDF.getPage(0).mediaBox[0]
 scaledWidth = pageWidth / 2
@@ -27,6 +28,7 @@ outputHandle.close()
 
 inputHandle = open(sys.argv[2], "rb")
 inputPDF = PyPDF2.PdfFileReader(inputHandle)
+inputHandle.close()
 outputPDF = PyPDF2.PdfFileWriter()
 outputPage = outputPDF.addBlankPage(pageWidth, pageHeight)
 for pageNumber in range (0, inputPDF.getNumPages()):
