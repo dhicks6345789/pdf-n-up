@@ -29,7 +29,7 @@ inputPDF = PyPDF2.PdfFileReader(open(sys.argv[3], "rb"))
 outputPDF = PyPDF2.PdfFileWriter()
 outputPage = outputPDF.addBlankPage(pageWidth, pageHeight)
 for pageNumber in range (0, inputPDF.getNumPages()-1):
-	outputPage.mergeTranslatedPage(inputPDF.getPage(pageNumber+1), pageTransforms[pageNumber][0], pageTransforms[pageNumber][1], False)
+	outputPage.mergeScaledTranslatedPage(inputPDF.getPage(pageNumber+1), 0.25, pageTransforms[pageNumber][0], pageTransforms[pageNumber][1], False)
 
 outputHandle = open(sys.argv[3], "wb")
 outputPDF.write(outputHandle)
