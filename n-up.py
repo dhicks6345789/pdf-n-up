@@ -23,6 +23,7 @@ inputPage = inputPDF.getPage(0).rotateClockwise(90)
 inputPage.scaleBy(0.25)
 #inputPage = inputPage.rotateCounterClockwise(270)
 outputPage.mergeTranslatedPage(inputPage, 300, 0, False)
+outputPDF.addPage(outputPage)
 
 #output.addPage(input1.getPage(i).rotateCounterClockwise(90))
 
